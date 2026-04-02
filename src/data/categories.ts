@@ -1,0 +1,58 @@
+import type { Category } from '../types'
+
+export const categories: Category[] = [
+  {
+    id: 'conversas',
+    name: 'Conversas do Dia a Dia',
+    description: 'Situações reais: café, trabalho, transporte',
+    level: 'Iniciante',
+    icon: 'chat',
+    color: 'text-blue-500',
+    bgColor: 'bg-blue-50',
+  },
+  {
+    id: 'phrasal-verbs',
+    name: 'Phrasal Verbs Essenciais',
+    description: 'Os 100 phrasal verbs mais usados no inglês',
+    level: 'Intermediário',
+    icon: 'bolt',
+    color: 'text-yellow-500',
+    bgColor: 'bg-yellow-50',
+  },
+  {
+    id: 'negocios',
+    name: 'Vocabulário de Negócios',
+    description: 'Inglês para reuniões, e-mails e apresentações',
+    level: 'Avançado',
+    icon: 'book',
+    color: 'text-green-600',
+    bgColor: 'bg-green-50',
+  },
+  {
+    id: 'idioms',
+    name: 'Expressões Idiomáticas',
+    description: 'Expressões que os nativos usam todo dia',
+    level: 'Intermediário',
+    icon: 'sparkles',
+    color: 'text-purple-500',
+    bgColor: 'bg-purple-50',
+  },
+  {
+    id: 'viagens',
+    name: 'Inglês para Viagens',
+    description: 'Aeroporto, hotel, restaurante e turismo',
+    level: 'Iniciante',
+    icon: 'plane',
+    color: 'text-orange-500',
+    bgColor: 'bg-orange-50',
+  },
+  {
+    id: 'tv-filmes',
+    name: 'Inglês da TV & Filmes',
+    description: 'Gírias e expressões de séries e filmes',
+    level: 'Intermediário',
+    icon: 'tv',
+    color: 'text-cyan-500',
+    bgColor: 'bg-cyan-50',
+  },
+]
