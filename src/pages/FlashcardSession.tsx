@@ -6,13 +6,14 @@ import type { Rating } from '../types'
 import FlashCard from '../components/flashcard/FlashCard'
 import RatingButtons from '../components/flashcard/RatingButtons'
 import ProgressBar from '../components/ui/ProgressBar'
+import SessionComplete from '../components/flashcard/SessionComplete'
 
 export default function FlashcardSession() {
   const { categoryId } = useParams()
   const navigate = useNavigate()
   const { queue, currentIndex, sessionCorrect, sessionTotal, isFlipped, isComplete,
     startSession, flipCard, rateCurrentCard, resetSession } = useSessionStore()
-  const { recordSession } = useProgressStore()
+  const { stats, recordSession, loadStats } = useProgressStore()
 
   // Keep a ref with the latest session values so the cleanup function always
   // has access to them (closures over stale state are a common React pitfall).
@@ -37,6 +38,7 @@ export default function FlashcardSession() {
   useEffect(() => {
     if (isComplete && sessionTotal > 0) {
       recordSession(sessionTotal, sessionCorrect)
+      loadStats()
     }
   }, [isComplete])
 
@@ -45,48 +47,15 @@ export default function FlashcardSession() {
 
   if (isComplete) {
     return (
-      <div className="p-4 md:p-8 flex flex-col items-center justify-center min-h-[80vh]">
-        <div className="text-center max-w-sm w-full">
-          <div className="text-5xl mb-4">🎉</div>
-          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Sessão concluída!</h2>
-          {sessionTotal > 0 ? (
-            <>
-              <p className="text-gray-500 text-sm mb-6">
-                Você revisou <strong>{sessionTotal}</strong> cards com{' '}
-                <strong className="text-green-600">
-                  {Math.round((sessionCorrect / sessionTotal) * 100)}% de acerto
-                </strong>
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <button
-                  onClick={() => startSession(categoryId)}
-                  className="px-5 py-3 bg-blue-500 text-white rounded-xl font-medium hover:bg-blue-600 active:bg-blue-700 transition-colors text-sm"
-                >
-                  Nova sessão
-                </button>
-                <button
-                  onClick={() => navigate('/')}
-                  className="px-5 py-3 border border-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gray-50 transition-colors text-sm"
-                >
-                  Voltar ao início
-                </button>
-              </div>
-            </>
-          ) : (
-            <>
-              <p className="text-gray-500 text-sm mb-6">
-                Nenhum card para revisar agora. Volte mais tarde ou escolha outra categoria.
-              </p>
-              <button
-                onClick={() => navigate('/categories')}
-                className="px-5 py-3 bg-blue-500 text-white rounded-xl font-medium hover:bg-blue-600 transition-colors text-sm"
-              >
-                Ver categorias
-              </button>
-            </>
-          )}
-        </div>
-      </div>
+      <SessionComplete
+        total={sessionTotal}
+        correct={sessionCorrect}
+        streak={stats.streak}
+        wordsLearned={stats.wordsLearned}
+        onNewSession={() => startSession(categoryId)}
+        onGoHome={() => navigate('/')}
+        onGoCategories={() => navigate('/categories')}
+      />
     )
   }
 

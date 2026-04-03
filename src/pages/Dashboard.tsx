@@ -38,6 +38,23 @@ export default function Dashboard() {
         <p className="text-gray-500 text-sm mt-0.5">Continue de onde você parou.</p>
       </div>
 
+      {/* Reminder banner */}
+      {todayReviewed === 0 && (
+        <div className="flex items-center gap-3 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-4">
+          <span className="text-xl shrink-0">🎯</span>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium text-amber-800">Você ainda não estudou hoje!</p>
+            <p className="text-xs text-amber-600 mt-0.5">Só 20 minutos fazem diferença. Vamos lá?</p>
+          </div>
+          <button
+            onClick={() => navigate('/flashcards')}
+            className="shrink-0 px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-medium rounded-lg transition-colors"
+          >
+            Estudar agora
+          </button>
+        </div>
+      )}
+
       {/* Top row stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
         {/* Streak */}
@@ -84,7 +101,13 @@ export default function Dashboard() {
           </div>
           <p className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{wordOfDay.front}</p>
           <div className="flex items-center gap-2 bg-blue-50 rounded-lg px-3 py-1.5 mb-3 self-start">
-            <span className="text-blue-400 text-sm">🔊</span>
+            <button
+              onClick={() => { window.speechSynthesis?.cancel(); window.speechSynthesis?.speak(Object.assign(new SpeechSynthesisUtterance(wordOfDay.front), { lang: 'en-US', rate: 0.85 })) }}
+              className="text-blue-400 hover:text-blue-600 transition-colors"
+              title="Ouvir pronúncia"
+            >
+              <SpeakerIcon className="w-4 h-4" />
+            </button>
             <p className="text-sm text-blue-700 font-medium">{wordOfDay.phonetic}</p>
           </div>
           <div className="bg-gray-50 rounded-lg px-3 py-2 mb-3">
@@ -122,6 +145,14 @@ function PlayIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
       <path d="M8 5v14l11-7z" />
+    </svg>
+  )
+}
+
+function SpeakerIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
     </svg>
   )
 }
