@@ -3,6 +3,7 @@ import type { Flashcard } from '../../types'
 interface Props {
   card: Flashcard
   isFlipped: boolean
+  reversed?: boolean
   onClick: () => void
 }
 
@@ -15,7 +16,10 @@ function speak(text: string) {
   window.speechSynthesis.speak(utterance)
 }
 
-export default function FlashCard({ card, isFlipped, onClick }: Props) {
+export default function FlashCard({ card, isFlipped, reversed = false, onClick }: Props) {
+  const frontText = reversed ? card.back : card.front
+  const backText = reversed ? card.front : card.back
+
   return (
     <div className="card-flip w-full max-w-2xl mx-auto cursor-pointer" onClick={onClick}>
       <div className={`card-flip-inner relative ${isFlipped ? 'flipped' : ''}`} style={{ minHeight: 260 }}>
@@ -24,19 +28,21 @@ export default function FlashCard({ card, isFlipped, onClick }: Props) {
           <p className="text-xs text-gray-400 mb-4 flex items-center gap-1.5">
             <RotateIcon className="w-3.5 h-3.5" /> Clique para virar
           </p>
-          <p className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-4">{card.front}</p>
+          <p className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-4">{frontText}</p>
 
-          {/* Fonética em português + botão de áudio */}
-          <div className="flex items-center gap-2 bg-blue-50 rounded-lg px-3 py-2 mb-3">
-            <button
-              onClick={e => { e.stopPropagation(); speak(card.front) }}
-              className="text-blue-400 hover:text-blue-600 transition-colors"
-              title="Ouvir pronúncia"
-            >
-              <SpeakerIcon className="w-4 h-4" />
-            </button>
-            <p className="text-sm text-blue-700 font-medium">{card.phonetic}</p>
-          </div>
+          {/* Fonética em português + botão de áudio (só quando o inglês está na frente) */}
+          {!reversed && (
+            <div className="flex items-center gap-2 bg-blue-50 rounded-lg px-3 py-2 mb-3">
+              <button
+                onClick={e => { e.stopPropagation(); speak(card.front) }}
+                className="text-blue-400 hover:text-blue-600 transition-colors"
+                title="Ouvir pronúncia"
+              >
+                <SpeakerIcon className="w-4 h-4" />
+              </button>
+              <p className="text-sm text-blue-700 font-medium">{card.phonetic}</p>
+            </div>
+          )}
 
           <span className="bg-yellow-50 text-yellow-600 text-xs px-3 py-1 rounded-full font-medium">
             {card.type}
@@ -45,7 +51,7 @@ export default function FlashCard({ card, isFlipped, onClick }: Props) {
 
         {/* Back */}
         <div className="card-face card-back absolute inset-0 bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center justify-center p-6 md:p-8">
-          <p className="text-2xl font-bold text-gray-900 text-center mb-2">{card.back}</p>
+          <p className="text-2xl font-bold text-gray-900 text-center mb-2">{backText}</p>
 
           {/* Fonética no verso + botão de áudio */}
           <div className="flex items-center gap-2 bg-blue-50 rounded-lg px-3 py-2 mb-3">

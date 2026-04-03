@@ -4,6 +4,8 @@ import { getAllCardProgress, saveCardProgress, getCardProgress } from '../lib/st
 import { createCardProgress, rateCard, isDue } from '../lib/srs'
 import { flashcards, getFlashcardsByCategory } from '../data/flashcards'
 
+export type SessionMode = 'review' | 'learn'
+
 interface SessionStore {
   queue: Flashcard[]
   currentIndex: number
@@ -11,25 +13,26 @@ interface SessionStore {
   sessionTotal: number
   isFlipped: boolean
   isComplete: boolean
+  sessionMode: SessionMode
 
-  startSession: (categoryId?: string) => void
+  startSession: (categoryId?: string, mode?: SessionMode) => void
   flipCard: () => void
   rateCurrentCard: (rating: Rating) => void
   resetSession: () => void
   getDueCount: (categoryId?: string) => number
 }
 
-function buildQueue(categoryId?: string): Flashcard[] {
+function buildQueue(categoryId?: string, mode: SessionMode = 'review'): Flashcard[] {
   const pool = categoryId ? getFlashcardsByCategory(categoryId) : flashcards
   const allProgress = getAllCardProgress()
 
-  const due = pool.filter(card => {
+  const filtered = pool.filter(card => {
     const progress = allProgress[card.id]
+    if (mode === 'learn') return !progress || progress.reviews === 0
     return !progress || isDue(progress)
   })
 
-  // Limit to 20 cards per session
-  return due.slice(0, 20)
+  return filtered.slice(0, 20)
 }
 
 export const useSessionStore = create<SessionStore>((set, get) => ({
@@ -39,9 +42,10 @@ export const useSessionStore = create<SessionStore>((set, get) => ({
   sessionTotal: 0,
   isFlipped: false,
   isComplete: false,
+  sessionMode: 'review',
 
-  startSession: (categoryId) => {
-    const queue = buildQueue(categoryId)
+  startSession: (categoryId, mode = 'review') => {
+    const queue = buildQueue(categoryId, mode)
     set({
       queue,
       currentIndex: 0,
@@ -49,6 +53,7 @@ export const useSessionStore = create<SessionStore>((set, get) => ({
       sessionTotal: 0,
       isFlipped: false,
       isComplete: queue.length === 0,
+      sessionMode: mode,
     })
   },
 
@@ -84,10 +89,11 @@ export const useSessionStore = create<SessionStore>((set, get) => ({
       sessionTotal: 0,
       isFlipped: false,
       isComplete: false,
+      sessionMode: 'review',
     })
   },
 
   getDueCount: (categoryId) => {
-    return buildQueue(categoryId).length
+    return buildQueue(categoryId, 'review').length
   },
 }))

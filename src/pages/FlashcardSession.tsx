@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSessionStore } from '../store/sessionStore'
+import type { SessionMode } from '../store/sessionStore'
 import { useProgressStore } from '../store/progressStore'
 import type { Rating } from '../types'
 import FlashCard from '../components/flashcard/FlashCard'
@@ -13,6 +14,15 @@ export default function FlashcardSession() {
   const navigate = useNavigate()
   const { queue, currentIndex, sessionCorrect, sessionTotal, isFlipped, isComplete,
     startSession, flipCard, rateCurrentCard, resetSession } = useSessionStore()
+  const [mode, setMode] = useState<SessionMode>('review')
+  const [reversed, setReversed] = useState(() => localStorage.getItem('ff_reverse_mode') === 'true')
+
+  function toggleReversed() {
+    setReversed(prev => {
+      localStorage.setItem('ff_reverse_mode', String(!prev))
+      return !prev
+    })
+  }
   const { stats, recordSession, loadStats } = useProgressStore()
 
   // Keep a ref with the latest session values so the cleanup function always
@@ -21,7 +31,7 @@ export default function FlashcardSession() {
   sessionRef.current = { total: sessionTotal, correct: sessionCorrect, complete: isComplete }
 
   useEffect(() => {
-    startSession(categoryId)
+    startSession(categoryId, mode)
     return () => {
       // Save partial session progress when navigating away mid-session.
       // This ensures streak and word count update even if the user doesn't
@@ -32,7 +42,7 @@ export default function FlashcardSession() {
       }
       resetSession()
     }
-  }, [categoryId])
+  }, [categoryId, mode])
 
   // Also record when session naturally completes (full queue reviewed).
   useEffect(() => {
@@ -65,13 +75,36 @@ export default function FlashcardSession() {
     <div className="p-4 md:p-8 max-w-2xl mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center gap-2">
-          <FlashIcon className="w-4 h-4 text-blue-500" />
-          <span className="text-sm font-medium text-gray-700">Sessão Ativa</span>
+        <div className="flex gap-1 bg-gray-100 rounded-lg p-1">
+          {(['review', 'learn'] as SessionMode[]).map(m => (
+            <button
+              key={m}
+              onClick={() => setMode(m)}
+              className={`px-3 py-1 text-xs rounded-md font-medium transition-colors ${
+                mode === m ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              {m === 'review' ? 'Revisar' : 'Aprender'}
+            </button>
+          ))}
         </div>
-        <span className="text-sm text-gray-400">
-          Card {currentIndex + 1} de {queue.length}
-        </span>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={toggleReversed}
+            title={reversed ? 'Modo normal (EN → PT)' : 'Modo reverso (PT → EN)'}
+            className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1.5 rounded-lg border transition-colors ${
+              reversed
+                ? 'bg-purple-50 border-purple-200 text-purple-700'
+                : 'bg-gray-50 border-gray-200 text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            <SwapIcon className="w-3.5 h-3.5" />
+            {reversed ? 'PT → EN' : 'EN → PT'}
+          </button>
+          <span className="text-sm text-gray-400">
+            {currentIndex + 1} / {queue.length}
+          </span>
+        </div>
       </div>
 
       {/* Progress bar */}
@@ -84,7 +117,7 @@ export default function FlashcardSession() {
       </p>
 
       {/* Flash card */}
-      <FlashCard card={currentCard} isFlipped={isFlipped} onClick={flipCard} />
+      <FlashCard card={currentCard} isFlipped={isFlipped} reversed={reversed} onClick={flipCard} />
 
       {/* Context example (shown after flip) */}
       {isFlipped && (
@@ -120,6 +153,17 @@ export default function FlashcardSession() {
         </div>
       )}
     </div>
+  )
+}
+
+function SwapIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+      <polyline points="17 1 21 5 17 9" />
+      <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+      <polyline points="7 23 3 19 7 15" />
+      <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+    </svg>
   )
 }
 
