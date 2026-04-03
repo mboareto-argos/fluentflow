@@ -558,6 +558,402 @@ export const flashcards: Flashcard[] = [
     phonetic: 'Uot-éver',
     type: 'expression', exampleEn: 'Whatever, I don\'t care anymore.', examplePt: 'Tanto faz, não me importo mais.',
   },
+
+  // ─── CONVERSAS — expansão ────────────────────────────────────────────────────
+  {
+    id: 'conv-021', categoryId: 'conversas', front: 'I have no idea',
+    back: 'Não tenho ideia', pronunciation: '/aɪ hæv nəʊ aɪˈdɪə/',
+    phonetic: 'Ái ráv nôu aidía',
+    type: 'phrase', exampleEn: 'I have no idea where I put my keys.', examplePt: 'Não tenho ideia de onde coloquei minhas chaves.',
+  },
+  {
+    id: 'conv-022', categoryId: 'conversas', front: 'What\'s up?',
+    back: 'E aí? / O que há de novo?', pronunciation: '/wɒts ʌp/',
+    phonetic: 'Uáts âp?',
+    type: 'phrase', exampleEn: 'Hey! What\'s up? Long time no see!', examplePt: 'Ei! E aí? Quanto tempo!',
+  },
+  {
+    id: 'conv-023', categoryId: 'conversas', front: 'I\'m just kidding',
+    back: 'Tô só brincando', pronunciation: '/aɪm dʒʌst ˈkɪdɪŋ/',
+    phonetic: 'Áim djâst kídin',
+    type: 'phrase', exampleEn: 'Relax, I\'m just kidding!', examplePt: 'Relaxa, tô só brincando!',
+  },
+  {
+    id: 'conv-024', categoryId: 'conversas', front: 'It\'s on me',
+    back: 'Tô pagando / É por minha conta', pronunciation: '/ɪts ɒn miː/',
+    phonetic: 'Its on mi',
+    type: 'phrase', exampleEn: 'Don\'t worry about the bill — it\'s on me.', examplePt: 'Não se preocupe com a conta — tô pagando.',
+  },
+  {
+    id: 'conv-025', categoryId: 'conversas', front: 'You\'re welcome',
+    back: 'De nada', pronunciation: '/jɔːr ˈwelkəm/',
+    phonetic: 'Iôr uélcam',
+    type: 'phrase', exampleEn: '— Thank you so much! — You\'re welcome!', examplePt: '— Muito obrigado! — De nada!',
+  },
+  {
+    id: 'conv-026', categoryId: 'conversas', front: 'Hang on a second',
+    back: 'Espera um segundo', pronunciation: '/hæŋ ɒn ə ˈsekənd/',
+    phonetic: 'Ráng on e sécand',
+    type: 'phrase', exampleEn: 'Hang on a second — I\'ll be right there.', examplePt: 'Espera um segundo — já vou.',
+  },
+  {
+    id: 'conv-027', categoryId: 'conversas', front: 'I feel like...',
+    back: 'Eu tô com vontade de... / Parece que...', pronunciation: '/aɪ fiːl laɪk/',
+    phonetic: 'Ái fíl láik',
+    type: 'phrase', exampleEn: 'I feel like eating pizza tonight.', examplePt: 'Tô com vontade de comer pizza hoje.',
+  },
+  {
+    id: 'conv-028', categoryId: 'conversas', front: 'That\'s fair enough',
+    back: 'Tá bom / Faz sentido', pronunciation: '/ðæts feər ɪˈnʌf/',
+    phonetic: 'Dáts fer inâf',
+    type: 'phrase', exampleEn: 'I can\'t come today. — That\'s fair enough.', examplePt: 'Não consigo vir hoje. — Tá bom.',
+  },
+  {
+    id: 'conv-029', categoryId: 'conversas', front: 'Are you free tonight?',
+    back: 'Você está livre hoje à noite?', pronunciation: '/ɑːr juː friː təˈnaɪt/',
+    phonetic: 'Ar iu frí tunáit?',
+    type: 'phrase', exampleEn: 'Are you free tonight? We could grab dinner.', examplePt: 'Você está livre hoje à noite? A gente podia jantar.',
+  },
+  {
+    id: 'conv-030', categoryId: 'conversas', front: 'I\'m running late',
+    back: 'Estou atrasado(a)', pronunciation: '/aɪm ˈrʌnɪŋ leɪt/',
+    phonetic: 'Áim rânin lêit',
+    type: 'phrase', exampleEn: 'Sorry, I\'m running late. Start without me.', examplePt: 'Desculpe, estou atrasado. Começa sem mim.',
+  },
+  {
+    id: 'conv-031', categoryId: 'conversas', front: 'Never mind',
+    back: 'Deixa pra lá / Não tem importância', pronunciation: '/ˈnevər maɪnd/',
+    phonetic: 'Néver máind',
+    type: 'phrase', exampleEn: 'Can you help me? — Actually, never mind, I got it.', examplePt: 'Pode me ajudar? — Na verdade, deixa pra lá, eu resolvi.',
+  },
+  {
+    id: 'conv-032', categoryId: 'conversas', front: 'Count me in',
+    back: 'Pode me incluir / Eu topo', pronunciation: '/kaʊnt miː ɪn/',
+    phonetic: 'Cáunt mi in',
+    type: 'phrase', exampleEn: 'We\'re going to the beach Saturday. — Count me in!', examplePt: 'A gente vai para a praia no sábado. — Eu topo!',
+  },
+  {
+    id: 'conv-033', categoryId: 'conversas', front: 'Sounds good to me',
+    back: 'Me parece ótimo / Pode ser', pronunciation: '/saʊndz ɡʊd tuː miː/',
+    phonetic: 'Sáundz gud tu mi',
+    type: 'phrase', exampleEn: 'Let\'s meet at 7. — Sounds good to me!', examplePt: 'Vamos nos encontrar às 7. — Me parece ótimo!',
+  },
+  {
+    id: 'conv-034', categoryId: 'conversas', front: 'I can\'t make it',
+    back: 'Não vou conseguir ir / Não vou poder', pronunciation: '/aɪ kænt meɪk ɪt/',
+    phonetic: 'Ái cánt mêik it',
+    type: 'phrase', exampleEn: 'I\'m sorry, I can\'t make it to the party.', examplePt: 'Desculpe, não vou conseguir ir à festa.',
+  },
+  {
+    id: 'conv-035', categoryId: 'conversas', front: 'What\'s going on?',
+    back: 'O que está acontecendo?', pronunciation: '/wɒts ˈɡəʊɪŋ ɒn/',
+    phonetic: 'Uáts góuin on?',
+    type: 'phrase', exampleEn: 'There\'s so much noise. What\'s going on?', examplePt: 'Tem muito barulho. O que está acontecendo?',
+  },
+
+  // ─── PHRASAL VERBS — expansão ────────────────────────────────────────────────
+  {
+    id: 'pv-021', categoryId: 'phrasal-verbs', front: 'to back up',
+    back: 'fazer backup / dar ré / apoiar', pronunciation: '/bæk ʌp/',
+    phonetic: 'Bák âp',
+    type: 'phrasal verb', exampleEn: 'Back up your files before updating.', examplePt: 'Faça backup dos seus arquivos antes de atualizar.',
+  },
+  {
+    id: 'pv-022', categoryId: 'phrasal-verbs', front: 'to break down',
+    back: 'quebrar / desmoronar / analisar em partes', pronunciation: '/breɪk daʊn/',
+    phonetic: 'Brêik dáun',
+    type: 'phrasal verb', exampleEn: 'My car broke down on the highway.', examplePt: 'Meu carro quebrou na rodovia.',
+  },
+  {
+    id: 'pv-023', categoryId: 'phrasal-verbs', front: 'to calm down',
+    back: 'se acalmar', pronunciation: '/kɑːm daʊn/',
+    phonetic: 'Cám dáun',
+    type: 'phrasal verb', exampleEn: 'Take a deep breath and calm down.', examplePt: 'Respira fundo e se acalma.',
+  },
+  {
+    id: 'pv-024', categoryId: 'phrasal-verbs', front: 'to check in',
+    back: 'fazer check-in / se registrar', pronunciation: '/tʃek ɪn/',
+    phonetic: 'Tchék in',
+    type: 'phrasal verb', exampleEn: 'You can check in online the night before.', examplePt: 'Você pode fazer check-in online na noite anterior.',
+  },
+  {
+    id: 'pv-025', categoryId: 'phrasal-verbs', front: 'to fall behind',
+    back: 'ficar para trás / atrasar', pronunciation: '/fɔːl bɪˈhaɪnd/',
+    phonetic: 'Fól biháind',
+    type: 'phrasal verb', exampleEn: 'I fell behind on my homework this week.', examplePt: 'Atrassei nas minhas tarefas essa semana.',
+  },
+  {
+    id: 'pv-026', categoryId: 'phrasal-verbs', front: 'to give in',
+    back: 'ceder / desistir', pronunciation: '/ɡɪv ɪn/',
+    phonetic: 'Guív in',
+    type: 'phrasal verb', exampleEn: 'Don\'t give in to the pressure.', examplePt: 'Não ceda à pressão.',
+  },
+  {
+    id: 'pv-027', categoryId: 'phrasal-verbs', front: 'to look forward to',
+    back: 'estar ansioso por / aguardar com expectativa', pronunciation: '/lʊk ˈfɔːwəd tuː/',
+    phonetic: 'Lúk fóruard tu',
+    type: 'phrasal verb', exampleEn: 'I\'m looking forward to the weekend.', examplePt: 'Estou ansioso pelo fim de semana.',
+  },
+  {
+    id: 'pv-028', categoryId: 'phrasal-verbs', front: 'to make up',
+    back: 'inventar / se reconciliar / se maquiar', pronunciation: '/meɪk ʌp/',
+    phonetic: 'Mêik âp',
+    type: 'phrasal verb', exampleEn: 'They fought but made up the next day.', examplePt: 'Eles brigaram mas se reconciliaram no dia seguinte.',
+  },
+  {
+    id: 'pv-029', categoryId: 'phrasal-verbs', front: 'to pick up',
+    back: 'pegar / buscar / aprender / melhorar', pronunciation: '/pɪk ʌp/',
+    phonetic: 'Pík âp',
+    type: 'phrasal verb', exampleEn: 'Can you pick me up at the airport?', examplePt: 'Você pode me buscar no aeroporto?',
+  },
+  {
+    id: 'pv-030', categoryId: 'phrasal-verbs', front: 'to run into',
+    back: 'encontrar por acaso / se chocar com', pronunciation: '/rʌn ˈɪntuː/',
+    phonetic: 'Rân íntu',
+    type: 'phrasal verb', exampleEn: 'I ran into my old teacher at the mall.', examplePt: 'Encontrei meu antigo professor por acaso no shopping.',
+  },
+  {
+    id: 'pv-031', categoryId: 'phrasal-verbs', front: 'to sort out',
+    back: 'resolver / organizar', pronunciation: '/sɔːrt aʊt/',
+    phonetic: 'Sórt áut',
+    type: 'phrasal verb', exampleEn: 'We need to sort out this problem quickly.', examplePt: 'Precisamos resolver esse problema rapidamente.',
+  },
+  {
+    id: 'pv-032', categoryId: 'phrasal-verbs', front: 'to take off',
+    back: 'decolar / tirar (roupa) / deslanchar', pronunciation: '/teɪk ɒf/',
+    phonetic: 'Têik of',
+    type: 'phrasal verb', exampleEn: 'The plane takes off at 6 AM.', examplePt: 'O avião decola às 6 da manhã.',
+  },
+  {
+    id: 'pv-033', categoryId: 'phrasal-verbs', front: 'to turn up',
+    back: 'aparecer / aumentar o volume', pronunciation: '/tɜːrn ʌp/',
+    phonetic: 'Têrn âp',
+    type: 'phrasal verb', exampleEn: 'He didn\'t turn up to the meeting.', examplePt: 'Ele não apareceu na reunião.',
+  },
+  {
+    id: 'pv-034', categoryId: 'phrasal-verbs', front: 'to wear out',
+    back: 'gastar / esgotar / cansar', pronunciation: '/weər aʊt/',
+    phonetic: 'Uér áut',
+    type: 'phrasal verb', exampleEn: 'These shoes are completely worn out.', examplePt: 'Esses sapatos estão completamente gastos.',
+  },
+  {
+    id: 'pv-035', categoryId: 'phrasal-verbs', front: 'to put up with',
+    back: 'aguentar / tolerar', pronunciation: '/pʊt ʌp wɪð/',
+    phonetic: 'Put âp uíd',
+    type: 'phrasal verb', exampleEn: 'I can\'t put up with this noise anymore.', examplePt: 'Não aguento mais esse barulho.',
+  },
+
+  // ─── NEGÓCIOS — expansão ─────────────────────────────────────────────────────
+  {
+    id: 'neg-016', categoryId: 'negocios', front: 'game changer',
+    back: 'algo que muda tudo / divisor de águas', pronunciation: '/ɡeɪm ˈtʃeɪndʒər/',
+    phonetic: 'Guêim tchêindjer',
+    type: 'noun', exampleEn: 'This new technology is a real game changer.', examplePt: 'Essa nova tecnologia é um verdadeiro divisor de águas.',
+  },
+  {
+    id: 'neg-017', categoryId: 'negocios', front: 'pain point',
+    back: 'ponto de dor / problema do cliente', pronunciation: '/peɪn pɔɪnt/',
+    phonetic: 'Pêin póint',
+    type: 'noun', exampleEn: 'We need to identify the customer\'s main pain points.', examplePt: 'Precisamos identificar os principais pontos de dor do cliente.',
+  },
+  {
+    id: 'neg-018', categoryId: 'negocios', front: 'to align',
+    back: 'alinhar / estar em sincronia', pronunciation: '/tuː əˈlaɪn/',
+    phonetic: 'Tu aláin',
+    type: 'verb', exampleEn: 'Let\'s align on the priorities before the meeting.', examplePt: 'Vamos alinhar as prioridades antes da reunião.',
+  },
+  {
+    id: 'neg-019', categoryId: 'negocios', front: 'deliverable',
+    back: 'entregável / produto a ser entregue', pronunciation: '/dɪˈlɪvərəbəl/',
+    phonetic: 'Dilíverabel',
+    type: 'noun', exampleEn: 'What are the main deliverables for this project?', examplePt: 'Quais são os principais entregáveis deste projeto?',
+  },
+  {
+    id: 'neg-020', categoryId: 'negocios', front: 'brainstorm',
+    back: 'brainstorming / tempestade de ideias', pronunciation: '/ˈbreɪnstɔːrm/',
+    phonetic: 'Brêinstórm',
+    type: 'noun', exampleEn: 'Let\'s brainstorm some ideas for the campaign.', examplePt: 'Vamos fazer um brainstorming de ideias para a campanha.',
+  },
+  {
+    id: 'neg-021', categoryId: 'negocios', front: 'bottom line',
+    back: 'resultado final / lucro líquido / em resumo', pronunciation: '/ˈbɒtəm laɪn/',
+    phonetic: 'Bótem láin',
+    type: 'noun', exampleEn: 'The bottom line is that we need to cut costs.', examplePt: 'O ponto final é que precisamos cortar custos.',
+  },
+  {
+    id: 'neg-022', categoryId: 'negocios', front: 'to touch base',
+    back: 'entrar em contato / verificar com alguém', pronunciation: '/tʌtʃ beɪs/',
+    phonetic: 'Tâtch bêis',
+    type: 'phrase', exampleEn: 'I\'ll touch base with the team after the call.', examplePt: 'Vou entrar em contato com o time depois da ligação.',
+  },
+  {
+    id: 'neg-023', categoryId: 'negocios', front: 'roadmap',
+    back: 'roteiro / plano de desenvolvimento', pronunciation: '/ˈrəʊdmæp/',
+    phonetic: 'Rôudmáp',
+    type: 'noun', exampleEn: 'The product roadmap outlines features for Q3.', examplePt: 'O roadmap do produto descreve as funcionalidades do Q3.',
+  },
+  {
+    id: 'neg-024', categoryId: 'negocios', front: 'synergy',
+    back: 'sinergia / cooperação vantajosa', pronunciation: '/ˈsɪnərdʒi/',
+    phonetic: 'Sínedjy',
+    type: 'noun', exampleEn: 'There\'s great synergy between our two teams.', examplePt: 'Há uma ótima sinergia entre nossas duas equipes.',
+  },
+  {
+    id: 'neg-025', categoryId: 'negocios', front: 'to greenlight',
+    back: 'aprovar / dar sinal verde para', pronunciation: '/ˈɡriːnlaɪt/',
+    phonetic: 'Grínláit',
+    type: 'verb', exampleEn: 'Management greenlighted the new project.', examplePt: 'A diretoria deu sinal verde para o novo projeto.',
+  },
+
+  // ─── IDIOMS — expansão ───────────────────────────────────────────────────────
+  {
+    id: 'id-013', categoryId: 'idioms', front: 'cost an arm and a leg',
+    back: 'custar os olhos da cara', pronunciation: '/kɒst ən ɑːrm ænd ə lɛɡ/',
+    phonetic: 'Cost an árm and a leg',
+    type: 'idiom', exampleEn: 'That sports car costs an arm and a leg.', examplePt: 'Aquele carro esportivo custa os olhos da cara.',
+  },
+  {
+    id: 'id-014', categoryId: 'idioms', front: 'the last straw',
+    back: 'a gota d\'água', pronunciation: '/ðə lɑːst strɔː/',
+    phonetic: 'De lást stró',
+    type: 'idiom', exampleEn: 'Being late again was the last straw for her.', examplePt: 'Chegar tarde de novo foi a gota d\'água para ela.',
+  },
+  {
+    id: 'id-015', categoryId: 'idioms', front: 'beat around the bush',
+    back: 'enrolar / falar em rodeios', pronunciation: '/biːt əˈraʊnd ðə bʊʃ/',
+    phonetic: 'Bít aráund de búch',
+    type: 'idiom', exampleEn: 'Stop beating around the bush and tell me the truth.', examplePt: 'Para de falar em rodeios e me diz a verdade.',
+  },
+  {
+    id: 'id-016', categoryId: 'idioms', front: 'hit the ground running',
+    back: 'começar em ritmo acelerado / já entrar no ritmo', pronunciation: '/hɪt ðə ɡraʊnd ˈrʌnɪŋ/',
+    phonetic: 'Rit de gráund rânin',
+    type: 'idiom', exampleEn: 'She hit the ground running on her first day at work.', examplePt: 'Ela entrou no ritmo logo no primeiro dia de trabalho.',
+  },
+  {
+    id: 'id-017', categoryId: 'idioms', front: 'add fuel to the fire',
+    back: 'jogar lenha na fogueira / piorar a situação', pronunciation: '/æd fjuːəl tuː ðə faɪər/',
+    phonetic: 'Ád fiúel tu de fáier',
+    type: 'idiom', exampleEn: 'Don\'t add fuel to the fire by arguing back.', examplePt: 'Não joga lenha na fogueira respondendo à briga.',
+  },
+  {
+    id: 'id-018', categoryId: 'idioms', front: 'the tip of the iceberg',
+    back: 'a ponta do iceberg', pronunciation: '/ðə tɪp əv ðiː ˈaɪsbɜːrɡ/',
+    phonetic: 'De típ ov de áisbêrg',
+    type: 'idiom', exampleEn: 'The reported losses are just the tip of the iceberg.', examplePt: 'Os prejuízos divulgados são apenas a ponta do iceberg.',
+  },
+  {
+    id: 'id-019', categoryId: 'idioms', front: 'take it with a grain of salt',
+    back: 'levar com um grão de sal / não levar muito a sério', pronunciation: '/teɪk ɪt wɪð ə ɡreɪn əv sɔːlt/',
+    phonetic: 'Têik it uid e grêin ov sólt',
+    type: 'idiom', exampleEn: 'Take what he says with a grain of salt — he exaggerates.', examplePt: 'Leva o que ele diz com um grão de sal — ele exagera.',
+  },
+  {
+    id: 'id-020', categoryId: 'idioms', front: 'hang in there',
+    back: 'aguentar firme / não desistir', pronunciation: '/hæŋ ɪn ðeər/',
+    phonetic: 'Rán in dér',
+    type: 'idiom', exampleEn: 'It\'s tough, but hang in there — it gets better.', examplePt: 'Tá difícil, mas aguenta firme — melhora.',
+  },
+
+  // ─── VIAGENS — expansão ──────────────────────────────────────────────────────
+  {
+    id: 'viag-013', categoryId: 'viagens', front: 'How do I get to...?',
+    back: 'Como eu chego a...?', pronunciation: '/haʊ duː aɪ ɡet tuː/',
+    phonetic: 'Rau du ái guét tu?',
+    type: 'phrase', exampleEn: 'How do I get to the city center?', examplePt: 'Como eu chego ao centro da cidade?',
+  },
+  {
+    id: 'viag-014', categoryId: 'viagens', front: 'I\'d like a room for two nights',
+    back: 'Eu gostaria de um quarto por duas noites', pronunciation: '/aɪd laɪk ə ruːm fər tuː naɪts/',
+    phonetic: 'Áid láik e rúm for tu náits',
+    type: 'phrase', exampleEn: 'Hi, I\'d like a room for two nights, please.', examplePt: 'Olá, eu gostaria de um quarto por duas noites, por favor.',
+  },
+  {
+    id: 'viag-015', categoryId: 'viagens', front: 'Is there a pharmacy nearby?',
+    back: 'Tem alguma farmácia aqui perto?', pronunciation: '/ɪz ðeər ə ˈfɑːrməsi ˈnɪrbaɪ/',
+    phonetic: 'Iz dér e fármasi níarbai?',
+    type: 'phrase', exampleEn: 'Excuse me, is there a pharmacy nearby?', examplePt: 'Com licença, tem alguma farmácia aqui perto?',
+  },
+  {
+    id: 'viag-016', categoryId: 'viagens', front: 'Where can I exchange money?',
+    back: 'Onde posso trocar dinheiro?', pronunciation: '/weər kæn aɪ ɪksˈtʃeɪndʒ ˈmʌni/',
+    phonetic: 'Uér can ái ikstchêindj mâni?',
+    type: 'phrase', exampleEn: 'Where can I exchange money around here?', examplePt: 'Onde posso trocar dinheiro por aqui?',
+  },
+  {
+    id: 'viag-017', categoryId: 'viagens', front: 'The AC isn\'t working',
+    back: 'O ar-condicionado não está funcionando', pronunciation: '/ðiː eɪˈsiː ɪznt ˈwɜːrkɪŋ/',
+    phonetic: 'De êi-sí íznt uérkin',
+    type: 'phrase', exampleEn: 'Excuse me, the AC in my room isn\'t working.', examplePt: 'Com licença, o ar-condicionado do meu quarto não está funcionando.',
+  },
+  {
+    id: 'viag-018', categoryId: 'viagens', front: 'Can I have an extra pillow?',
+    back: 'Posso ter um travesseiro extra?', pronunciation: '/kæn aɪ hæv ən ˈekstrə ˈpɪləʊ/',
+    phonetic: 'Can ái ráv an éxtra pílou?',
+    type: 'phrase', exampleEn: 'Can I have an extra pillow, please?', examplePt: 'Posso ter um travesseiro extra, por favor?',
+  },
+  {
+    id: 'viag-019', categoryId: 'viagens', front: 'What time does it close?',
+    back: 'A que horas fecha?', pronunciation: '/wɒt taɪm dʌz ɪt kləʊz/',
+    phonetic: 'Uát táim dâz it clóuz?',
+    type: 'phrase', exampleEn: 'What time does the museum close?', examplePt: 'A que horas o museu fecha?',
+  },
+  {
+    id: 'viag-020', categoryId: 'viagens', front: 'I missed my connection',
+    back: 'Perdi minha conexão (de voo)', pronunciation: '/aɪ mɪst maɪ kəˈnekʃən/',
+    phonetic: 'Ái míst mái conécshan',
+    type: 'phrase', exampleEn: 'I missed my connection — what should I do?', examplePt: 'Perdi minha conexão — o que devo fazer?',
+  },
+
+  // ─── TV & FILMES — expansão ──────────────────────────────────────────────────
+  {
+    id: 'tv-013', categoryId: 'tv-filmes', front: 'I totally get it',
+    back: 'Eu entendo completamente', pronunciation: '/aɪ ˈtəʊtəli ɡet ɪt/',
+    phonetic: 'Ái tóutali guét it',
+    type: 'phrase', exampleEn: 'Don\'t worry, I totally get it.', examplePt: 'Não se preocupa, eu entendo completamente.',
+  },
+  {
+    id: 'tv-014', categoryId: 'tv-filmes', front: 'You\'re killing it!',
+    back: 'Você tá arrasando!', pronunciation: '/jɔːr ˈkɪlɪŋ ɪt/',
+    phonetic: 'Iôr kílin it!',
+    type: 'phrase', exampleEn: 'That presentation was amazing — you\'re killing it!', examplePt: 'Essa apresentação foi incrível — você tá arrasando!',
+  },
+  {
+    id: 'tv-015', categoryId: 'tv-filmes', front: 'That\'s the thing',
+    back: 'Essa é a questão / É exatamente isso', pronunciation: '/ðæts ðə θɪŋ/',
+    phonetic: 'Dáts de ting',
+    type: 'phrase', exampleEn: 'That\'s the thing — I don\'t know what to do.', examplePt: 'Essa é a questão — eu não sei o que fazer.',
+  },
+  {
+    id: 'tv-016', categoryId: 'tv-filmes', front: 'Fair enough',
+    back: 'Justo / Tudo bem / Faz sentido', pronunciation: '/feər ɪˈnʌf/',
+    phonetic: 'Fér inâf',
+    type: 'phrase', exampleEn: '— I need more time. — Fair enough.', examplePt: '— Preciso de mais tempo. — Justo.',
+  },
+  {
+    id: 'tv-017', categoryId: 'tv-filmes', front: 'Are you serious right now?',
+    back: 'Você tá falando sério agora?', pronunciation: '/ɑːr juː ˈsɪəriəs raɪt naʊ/',
+    phonetic: 'Ar iu sírias ráit náu?',
+    type: 'phrase', exampleEn: 'You forgot our anniversary? Are you serious right now?', examplePt: 'Você esqueceu nosso aniversário? Tá falando sério?',
+  },
+  {
+    id: 'tv-018', categoryId: 'tv-filmes', front: 'That\'s my point exactly',
+    back: 'É exatamente o que eu quis dizer', pronunciation: '/ðæts maɪ pɔɪnt ɪɡˈzæktli/',
+    phonetic: 'Dáts mái póint iguizáktli',
+    type: 'phrase', exampleEn: '— So you think we rushed it? — That\'s my point exactly.', examplePt: '— Então você acha que foi apressado? — É exatamente o que eu quis dizer.',
+  },
+  {
+    id: 'tv-019', categoryId: 'tv-filmes', front: 'I\'m not buying it',
+    back: 'Não estou acreditando / Não tô comprando essa ideia', pronunciation: '/aɪm nɒt ˈbaɪɪŋ ɪt/',
+    phonetic: 'Áim not báiin it',
+    type: 'phrase', exampleEn: 'He said it was an accident, but I\'m not buying it.', examplePt: 'Ele disse que foi acidente, mas não tô comprando.',
+  },
+  {
+    id: 'tv-020', categoryId: 'tv-filmes', front: 'It\'s not what it looks like',
+    back: 'Não é o que parece', pronunciation: '/ɪts nɒt wɒt ɪt lʊks laɪk/',
+    phonetic: 'Its not uát it luks láik',
+    type: 'phrase', exampleEn: 'Wait — it\'s not what it looks like!', examplePt: 'Espera — não é o que parece!',
+  },
 ]
 
 export const WORD_OF_THE_DAY_IDS = [

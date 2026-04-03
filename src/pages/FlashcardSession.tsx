@@ -8,6 +8,8 @@ import FlashCard from '../components/flashcard/FlashCard'
 import RatingButtons from '../components/flashcard/RatingButtons'
 import ProgressBar from '../components/ui/ProgressBar'
 import SessionComplete from '../components/flashcard/SessionComplete'
+import QuizCard from '../components/flashcard/QuizCard'
+import { flashcards } from '../data/flashcards'
 
 export default function FlashcardSession() {
   const { categoryId } = useParams()
@@ -76,7 +78,7 @@ export default function FlashcardSession() {
       {/* Header */}
       <div className="flex items-center justify-between mb-2">
         <div className="flex gap-1 bg-gray-100 rounded-lg p-1">
-          {(['review', 'learn'] as SessionMode[]).map(m => (
+          {([['review', 'Revisar'], ['learn', 'Aprender'], ['quiz', 'Quiz']] as [SessionMode, string][]).map(([m, label]) => (
             <button
               key={m}
               onClick={() => setMode(m)}
@@ -84,7 +86,7 @@ export default function FlashcardSession() {
                 mode === m ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
               }`}
             >
-              {m === 'review' ? 'Revisar' : 'Aprender'}
+              {label}
             </button>
           ))}
         </div>
@@ -116,41 +118,52 @@ export default function FlashcardSession() {
         {currentCard.categoryId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
       </p>
 
-      {/* Flash card */}
-      <FlashCard card={currentCard} isFlipped={isFlipped} reversed={reversed} onClick={flipCard} />
+      {mode === 'quiz' ? (
+        <QuizCard
+          card={currentCard}
+          allCards={flashcards}
+          onCorrect={() => rateCurrentCard('good')}
+          onWrong={() => rateCurrentCard('hard')}
+        />
+      ) : (
+        <>
+          {/* Flash card */}
+          <FlashCard card={currentCard} isFlipped={isFlipped} reversed={reversed} onClick={flipCard} />
 
-      {/* Context example (shown after flip) */}
-      {isFlipped && (
-        <div className="mt-4 bg-white rounded-xl border border-gray-100 shadow-sm p-4 md:p-5">
-          <p className="text-xs text-gray-400 mb-2 flex items-center gap-1">
-            <QuoteIcon className="w-3.5 h-3.5" /> Exemplo em contexto
-          </p>
-          <p className="text-sm font-medium text-gray-800">{currentCard.exampleEn}</p>
-          <p className="text-sm text-gray-400 mt-1">{currentCard.examplePt}</p>
-        </div>
-      )}
+          {/* Context example (shown after flip) */}
+          {isFlipped && (
+            <div className="mt-4 bg-white rounded-xl border border-gray-100 shadow-sm p-4 md:p-5">
+              <p className="text-xs text-gray-400 mb-2 flex items-center gap-1">
+                <QuoteIcon className="w-3.5 h-3.5" /> Exemplo em contexto
+              </p>
+              <p className="text-sm font-medium text-gray-800">{currentCard.exampleEn}</p>
+              <p className="text-sm text-gray-400 mt-1">{currentCard.examplePt}</p>
+            </div>
+          )}
 
-      {/* Rating / hint */}
-      <div className="mt-4">
-        {isFlipped ? (
-          <RatingButtons onRate={rating => rateCurrentCard(rating as Rating)} />
-        ) : (
-          <p className="text-center text-sm text-gray-400">
-            Clique no card para ver a resposta
-          </p>
-        )}
-      </div>
+          {/* Rating / hint */}
+          <div className="mt-4">
+            {isFlipped ? (
+              <RatingButtons onRate={rating => rateCurrentCard(rating as Rating)} />
+            ) : (
+              <p className="text-center text-sm text-gray-400">
+                Clique no card para ver a resposta
+              </p>
+            )}
+          </div>
 
-      {/* Skip */}
-      {!isFlipped && (
-        <div className="mt-4 text-center">
-          <button
-            onClick={() => rateCurrentCard('hard')}
-            className="text-xs text-gray-400 hover:text-gray-600 transition-colors flex items-center gap-1 mx-auto"
-          >
-            <SkipIcon className="w-3.5 h-3.5" /> Pular este card
-          </button>
-        </div>
+          {/* Skip */}
+          {!isFlipped && (
+            <div className="mt-4 text-center">
+              <button
+                onClick={() => rateCurrentCard('hard')}
+                className="text-xs text-gray-400 hover:text-gray-600 transition-colors flex items-center gap-1 mx-auto"
+              >
+                <SkipIcon className="w-3.5 h-3.5" /> Pular este card
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   )

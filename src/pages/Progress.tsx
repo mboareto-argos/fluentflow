@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useProgressStore } from '../store/progressStore'
-import { getLast7DaysActivity, getAllCardProgress } from '../lib/storage'
+import { getLast7DaysActivity, getLast30DaysActivity, getAllCardProgress } from '../lib/storage'
 import { categories } from '../data/categories'
 import { flashcards, getCardCountByCategory } from '../data/flashcards'
 import {
@@ -34,6 +34,7 @@ export default function Progress() {
   useEffect(() => { loadStats() }, [])
 
   const last7 = getLast7DaysActivity(stats)
+  const last30 = getLast30DaysActivity(stats)
   const chartData = last7.map(d => ({
     day: DAY_LABELS[new Date(d.date + 'T12:00:00').getDay()],
     cards: d.cardsReviewed,
@@ -139,6 +140,38 @@ export default function Progress() {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* 30-day heatmap */}
+      <div className="mt-4 bg-white rounded-xl border border-gray-100 shadow-sm p-4 md:p-5">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-sm font-semibold text-gray-800">Atividade — últimos 30 dias</h2>
+          <div className="flex items-center gap-1.5 text-xs text-gray-400">
+            <span>menos</span>
+            {['bg-gray-100', 'bg-blue-200', 'bg-blue-400', 'bg-blue-600'].map(c => (
+              <span key={c} className={`w-3 h-3 rounded-sm ${c}`} />
+            ))}
+            <span>mais</span>
+          </div>
+        </div>
+        <div className="grid grid-cols-10 gap-1.5">
+          {last30.map(d => {
+            const n = d.cardsReviewed
+            const color = n === 0 ? 'bg-gray-100' : n <= 5 ? 'bg-blue-200' : n <= 10 ? 'bg-blue-400' : 'bg-blue-600'
+            const isToday = d.date === new Date().toISOString().slice(0, 10)
+            return (
+              <div
+                key={d.date}
+                title={`${d.date}: ${n} cards`}
+                className={`h-6 rounded-sm ${color} ${isToday ? 'ring-2 ring-blue-400 ring-offset-1' : ''}`}
+              />
+            )
+          })}
+        </div>
+        <div className="flex justify-between mt-2 text-xs text-gray-400">
+          <span>{new Date(Date.now() - 29 * 86400000).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' })}</span>
+          <span>hoje</span>
         </div>
       </div>
 

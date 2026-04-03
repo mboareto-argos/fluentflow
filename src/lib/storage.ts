@@ -128,3 +128,13 @@ export function getLast7DaysActivity(stats: UserStats): DailyActivity[] {
   }
   return days
 }
+
+export function getLast30DaysActivity(stats: UserStats): DailyActivity[] {
+  const days: DailyActivity[] = []
+  for (let i = 29; i >= 0; i--) {
+    const date = new Date(Date.now() - i * 86400000).toISOString().slice(0, 10)
+    const found = stats.dailyActivity.find(d => d.date === date)
+    days.push(found ?? { date, cardsReviewed: 0 })
+  }
+  return days
+}

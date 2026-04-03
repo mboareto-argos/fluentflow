@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useProgressStore } from '../store/progressStore'
 import { useSessionStore } from '../store/sessionStore'
@@ -7,6 +7,7 @@ import { getWordOfTheDay, getCardCountByCategory } from '../data/flashcards'
 import { getTodayCardsReviewed } from '../lib/storage'
 import CategoryIcon from '../components/ui/CategoryIcon'
 import ProgressBar from '../components/ui/ProgressBar'
+import OnboardingTour from '../components/ui/OnboardingTour'
 
 function getGreeting() {
   const h = new Date().getHours()
@@ -18,6 +19,12 @@ function getGreeting() {
 export default function Dashboard() {
   const navigate = useNavigate()
   const { stats, userName, loadStats } = useProgressStore()
+  const [showTour, setShowTour] = useState(() => !localStorage.getItem('ff_onboarding_seen'))
+
+  function dismissTour() {
+    localStorage.setItem('ff_onboarding_seen', 'true')
+    setShowTour(false)
+  }
 
   useEffect(() => { loadStats() }, [])
   const getDueCount = useSessionStore(s => s.getDueCount)
@@ -30,6 +37,7 @@ export default function Dashboard() {
 
   return (
     <div className="p-4 md:p-8 max-w-5xl">
+      {showTour && <OnboardingTour onDone={dismissTour} />}
       {/* Header */}
       <div className="mb-5">
         <h1 className="text-xl md:text-2xl font-semibold text-gray-900">

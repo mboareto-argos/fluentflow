@@ -4,7 +4,7 @@ import { getAllCardProgress, saveCardProgress, getCardProgress } from '../lib/st
 import { createCardProgress, rateCard, isDue } from '../lib/srs'
 import { flashcards, getFlashcardsByCategory } from '../data/flashcards'
 
-export type SessionMode = 'review' | 'learn'
+export type SessionMode = 'review' | 'learn' | 'quiz'
 
 interface SessionStore {
   queue: Flashcard[]
