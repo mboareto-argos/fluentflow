@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useProgressStore } from '../store/progressStore'
 import { getLast7DaysActivity, getAllCardProgress } from '../lib/storage'
 import { categories } from '../data/categories'
-import { getCardCountByCategory } from '../data/flashcards'
+import { flashcards, getCardCountByCategory } from '../data/flashcards'
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell
 } from 'recharts'
@@ -37,8 +37,9 @@ export default function Progress() {
   const allProgress = getAllCardProgress()
   const categoryStats = categories.map(cat => {
     const total = getCardCountByCategory(cat.id)
+    const cardIds = new Set(flashcards.filter(c => c.categoryId === cat.id).map(c => c.id))
     const learned = Object.values(allProgress).filter(p =>
-      p.cardId.startsWith(cat.id.slice(0, 4)) && p.reviews > 0
+      cardIds.has(p.cardId) && p.reviews > 0
     ).length
     const pct = total > 0 ? Math.round((learned / total) * 100) : 0
     return { ...cat, learned, total, pct }
