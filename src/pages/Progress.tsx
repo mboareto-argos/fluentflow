@@ -9,6 +9,16 @@ import {
 
 const DAY_LABELS = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
 
+// Explicit classes so Tailwind includes them in the build (dynamic strings get purged)
+const BAR_COLOR: Record<string, string> = {
+  'conversas':     'bg-blue-500',
+  'phrasal-verbs': 'bg-yellow-500',
+  'negocios':      'bg-green-600',
+  'idioms':        'bg-purple-500',
+  'viagens':       'bg-orange-500',
+  'tv-filmes':     'bg-cyan-500',
+}
+
 const ACHIEVEMENTS = [
   { id: 'streak_7', label: '7 dias', icon: '🔥', desc: 'Sequência de 7 dias' },
   { id: 'streak_30', label: '30 dias', icon: '🏆', desc: 'Sequência de 30 dias' },
@@ -122,7 +132,7 @@ export default function Progress() {
                 </div>
                 <div className="w-full bg-gray-100 rounded-full h-1.5">
                   <div
-                    className={`h-1.5 rounded-full transition-all ${cat.color.replace('text-', 'bg-')}`}
+                    className={`h-1.5 rounded-full transition-all ${BAR_COLOR[cat.id] ?? 'bg-gray-400'}`}
                     style={{ width: `${cat.pct}%` }}
                   />
                 </div>
